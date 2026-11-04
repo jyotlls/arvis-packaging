@@ -4485,8 +4485,8 @@ nav.footer-col ul a:focus-visible .footer-link-icon {
     font-weight: 400;
     line-height: 1.08;
     letter-spacing: -.025em;
-    color: #fff;
-    animation: pbFade 1.2s .15s ease both
+    color: #fff
+    /* animation: pbFade 1.2s .15s ease both */
 }
 
 .page-breadcrumb ol {
@@ -4499,8 +4499,8 @@ nav.footer-col ul a:focus-visible .footer-link-icon {
     font-size: 13px;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, .72);
-    animation: pbFade 1.2s .35s ease both
+    color: rgba(255, 255, 255, .72)
+    /* animation: pbFade 1.2s .35s ease both */
 }
 
 /* larger tap area without moving the row */

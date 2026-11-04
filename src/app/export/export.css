@@ -2,8 +2,8 @@
    EXPORT PAGE — mobile-first
    ========================================================= */
 
-/* sections fade up as they enter the viewport */
-.ex [data-reveal] {
+/* sections fade up as they enter the viewport: switched off, content shows in place */
+/* .ex [data-reveal] {
     opacity: 0;
     transform: translateY(28px);
     transition: opacity .9s ease, transform .9s cubic-bezier(.2, .8, .2, 1)
@@ -12,7 +12,7 @@
 .ex [data-reveal].is-in {
     opacity: 1;
     transform: none
-}
+} */
 
 /* ---------- 1. LOGISTICS & WAREHOUSING ---------- */
 .ex-logistics {
@@ -253,9 +253,10 @@
     display: flex
 }
 
+/* market cards rising in one by one: switched off
 .ex-markets.is-in li {
     animation: exRise .7s cubic-bezier(.2, .8, .2, 1) var(--d, 0s) both
-}
+} */
 
 .ex-market {
     display: grid;

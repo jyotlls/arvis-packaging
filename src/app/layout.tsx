@@ -78,7 +78,13 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} ${manrope.variable} ${instrumentSerif.variable}`}>
+    // data-scroll-behavior lets Next.js switch off the CSS smooth scroll while changing pages,
+    // so a new page opens at the top instead of visibly scrolling up
+    <html
+      lang="en"
+      className={`${inter.variable} ${manrope.variable} ${instrumentSerif.variable}`}
+      data-scroll-behavior="smooth"
+    >
       <body>
         <script
           type="application/ld+json"
