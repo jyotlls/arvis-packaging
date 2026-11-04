@@ -1,0 +1,431 @@
+"use client";
+
+import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
+import Image from "next/image";
+import { ArrowLeft, ArrowRight, ArrowUpRight, BadgeCheck, Container, Leaf, MoveRight, Recycle, Sprout, Target, Telescope } from "lucide-react";
+import PageBanner from "../PageBanner";
+import SiteShell from "../SiteShell";
+
+const FACILITY_SLIDES = [
+  {
+    image: "/assets/banner/banner-4.webp",
+    alt: "Aluminum containers and foil prepared for packing",
+    text: "Our state-of-the-art manufacturing facilities across the region, with the latest international technology, extend to over two million square feet in area.",
+  },
+  {
+    image: "/assets/banner/inner-plastic.webp",
+    alt: "Plastic cups, containers and carry bags ready for dispatch",
+    text: "Production lines for paper, plastic, molded fiber and aluminum packaging — all made in India.",
+  },
+];
+
+const CERTIFICATIONS = [
+  { name: "Kosher", logo: "/assets/certifications/kosher.png", w: 105, h: 105 },
+  { name: "SGS", logo: "/assets/certifications/sgs.png", w: 203, h: 95 },
+  { name: "ISO", logo: "/assets/certifications/iso.png", w: 95, h: 79 },
+  { name: "FSC", logo: "/assets/certifications/fsc.png", w: 88, h: 105 },
+  { name: "PFAS Free", logo: "/assets/certifications/pfas-free.png", w: 67, h: 76 },
+  { name: "FDA Approved", logo: "/assets/certifications/fda-approved.png", w: 97, h: 61 },
+  { name: "Sedex", logo: "/assets/certifications/sedex.png", w: 137, h: 39 },
+  { name: "Make in India", logo: "/assets/certifications/make-in-india.png", w: 230, h: 105 },
+];
+
+const SUSTAIN_POINTS = [
+  { icon: Sprout, title: "Renewable Materials" },
+  { icon: Leaf, title: "Plant-Based Packaging" },
+  { icon: Recycle, title: "Recyclable Packaging" },
+  { icon: Container, title: "Compostable Options" },
+];
+
+const WHY_CHOOSE = [
+  {
+    image: "/assets/about/manufacturing-line.webp",
+    alt: "Packaging manufacturing line in operation",
+    title: "One Sourcing Partner",
+    copy: "The strengths of many manufacturers across paper, plastic, molded fiber and aluminum.",
+  },
+  {
+    image: "/assets/export/steps/quality-check.webp",
+    alt: "Inspector checking packaging products in a warehouse",
+    title: "Quality Oversight",
+    copy: "Quality checks and fulfilment oversight before products move forward.",
+  },
+  {
+    image: "/assets/export/steps/loading.webp",
+    alt: "Shipping containers being loaded at a port",
+    title: "Combined Orders",
+    copy: "Different product categories, planned together to make the most of container space.",
+  },
+  {
+    image: "/assets/export/steps/requirement.webp",
+    alt: "Hands working through a packaging order",
+    title: "Dependable Service",
+    copy: "Honest communication and after-sales support that make business effortless.",
+  },
+];
+
+const VALUES = ["Consistency", "Accountability", "Partnership", "Adaptability", "Responsibility"];
+
+const pad = (n: number) => String(n).padStart(2, "0");
+
+// Display size of a certification mark: fit inside 120×72 without CSS resizing the image.
+const logoScale = ({ w, h }: { w: number; h: number }) => Math.min(120 / w, 72 / h, 1);
+
+export default function AboutPage() {
+  const rootRef = useRef<HTMLElement>(null);
+  const [slide, setSlide] = useState(0);
+  const [sliderPaused, setSliderPaused] = useState(false);
+
+  useEffect(() => {
+    if (sliderPaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setTimeout(() => setSlide((n) => (n + 1) % FACILITY_SLIDES.length), 7000);
+    return () => window.clearTimeout(timer);
+  }, [slide, sliderPaused]);
+
+  const tiltCard = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse") return;
+    const card = e.currentTarget;
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top) / r.height;
+    card.style.setProperty("--mx", `${x * 100}%`);
+    card.style.setProperty("--my", `${y * 100}%`);
+    card.style.setProperty("--rx", `${(x - 0.5) * 16}deg`);
+    card.style.setProperty("--ry", `${(0.5 - y) * 16}deg`);
+  };
+
+  const resetCard = (e: ReactPointerEvent<HTMLDivElement>) => {
+    for (const v of ["--mx", "--my", "--rx", "--ry"]) e.currentTarget.style.removeProperty(v);
+  };
+
+  const goToSlide = (n: number) => setSlide((n + FACILITY_SLIDES.length) % FACILITY_SLIDES.length);
+
+  // Fade/slide content in once it enters the viewport.
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    const items = root.querySelectorAll<HTMLElement>("[data-reveal]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { rootMargin: "0px 0px -12% 0px" },
+    );
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <SiteShell activePage="about">
+      {({ openQuote }) => (
+        <main className="" ref={rootRef}>
+          {/* PAGE BANNER */}
+          <PageBanner title="About Arvis Packaging" image="/assets/banner/inner-about.webp" trail={[{ label: "About Us" }]} />
+
+          {/* ABOUT US */}
+          <section className="ab-hero" id="about" aria-labelledby="ab-hero-title">
+            <div className="ab-hero-copy">
+              <p className="eyebrow">
+                <span className="brand-lines"></span>ABOUT ARVIS
+              </p>
+
+              <h2 id="ab-hero-title" className="ab-hero-title">
+                <span className="ab-line">
+                  <span>More Than Packaging.</span>
+                </span>
+                <span className="ab-line">
+                  <em>A Better Way to Source It.</em>
+                </span>
+              </h2>
+
+              <p className="ab-hero-lead">
+                Arvis Packaging delivers reliable packaging solutions through a strong network of
+                manufacturers in India, offering paper, plastic, bagasse and aluminum packaging to businesses
+                worldwide. We simplify sourcing through product selection, customization, quality checks and
+                order consolidation.
+              </p>
+              <p className="ab-hero-lead">
+                With warehousing in India and the United States, including Mundra and New Jersey, we combine
+                multiple product requirements into coordinated shipments that optimize container space and
+                reduce costs.
+              </p>
+            </div>
+
+            <div className="ab-hero-visual">
+              <div className="hero-visual">
+                <Image
+                  src="/assets/about/about-us-home.webp"
+                  alt="Arvis paper bags, cups, takeaway containers and aluminum trays"
+                  width={800}
+                  height={650}
+                  sizes="(min-width: 992px) 46vw, 92vw"
+                />
+              </div>
+              <div className="ab-hero-swatch" aria-hidden="true">
+                <Image src="/assets/about/box.webp" alt="" fill sizes="220px" />
+              </div>
+            </div>
+          </section>
+                    {/* OUR VALUES */}
+        
+
+          {/* MISSION + VISION */}
+          <section className="ab-mv" id="mission" aria-label="Our mission and vision">
+            <article className="ab-mv-side ab-mv-mission" data-reveal>
+              <span className="ab-mv-word" aria-hidden="true">
+                Mission
+              </span>
+              <span className="ab-mv-icon" aria-hidden="true">
+                <Target size={32} strokeWidth={1.5} />
+              </span>
+              <h2>
+                Our <em>Mission</em>
+              </h2>
+              <blockquote>
+                To build lasting, trusted relationships with buyers worldwide through honesty, commitment, and
+                dependable service, making every business interaction simple and seamless.
+              </blockquote>
+            </article>
+
+            <article className="ab-mv-side ab-mv-vision" data-reveal style={{ transitionDelay: "120ms" }}>
+              <span className="ab-mv-word" aria-hidden="true">
+                Vision
+              </span>
+              <span className="ab-mv-icon" aria-hidden="true">
+                <Telescope size={32} strokeWidth={1.5} />
+              </span>
+              <h2>
+                Our <em>Vision</em>
+              </h2>
+              <blockquote>
+                To become a trusted and dependable supply chain partner worldwide by delivering quality packaging,
+                exceptional <span className="text-nowrap">after-sales</span> support, and continuous improvement.
+              </blockquote>
+            </article>
+          </section>
+             {/* CERTIFICATIONS */}
+          {/* <section className="ab-certs" id="certifications" aria-labelledby="ab-certs-title">
+            <div className="ab-certs-head" data-reveal>
+              <p className="eyebrow">
+                <span className="brand-lines"></span>QUALITY CERTIFICATIONS
+                <span className="brand-lines"></span>
+              </p>
+              <h2 id="ab-certs-title">
+                Certified Packaging <br />
+                <em>Manufacturing Standards</em>
+              </h2>
+            </div>
+            */}
+
+            {/* certificates orbit a central seal; each card counter-turns to stay upright */}
+            {/* <div className="ab-orbit" data-reveal>
+              <span className="ab-orbit-ring ab-orbit-ring-1" aria-hidden="true" />
+              <span className="ab-orbit-ring ab-orbit-ring-2" aria-hidden="true" />
+
+              <div className="ab-orbit-core" aria-hidden="true">
+                <svg className="ab-orbit-seal" viewBox="0 0 120 120">
+                  <defs>
+                    <path id="ab-seal-circle" d="M60 60 m-46 0 a46 46 0 1 1 92 0 a46 46 0 1 1 -92 0" />
+                  </defs>
+                  <text>
+                    <textPath href="#ab-seal-circle" textLength="286">
+                      AUDITED • TESTED • CERTIFIED • AUDITED • TESTED • CERTIFIED •
+                    </textPath>
+                  </text>
+                </svg>
+                */}
+                {/* <BadgeCheck size={40} strokeWidth={1.4} /> */}
+                {/* <strong>Certified</strong>
+              </div>
+
+              <ul className="ab-orbit-list">
+                {CERTIFICATIONS.map((cert, i) => (
+                  <li
+                    key={cert.name}
+                    style={{ "--i": i, "--n": CERTIFICATIONS.length, "--d": `${i * 80}ms` } as CSSProperties}
+                  >
+                    <div className="ab-orbit-spin">
+                      <div className="ab-cert-card" onPointerMove={tiltCard} onPointerLeave={resetCard}>
+                        <span className="ab-cert-logo">
+                          <Image
+                            src={cert.logo}
+                            alt={`${cert.name} certification logo`}
+                            width={Math.round(cert.w * logoScale(cert))}
+                            height={Math.round(cert.h * logoScale(cert))}
+                          />
+                        </span>
+                        <span className="ab-cert-name">{cert.name}</span>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section> */}
+
+          {/* WHY CHOOSE US */}
+          <section className="ab-why" id="why-choose-us" aria-labelledby="ab-why-title">
+            <div className="ab-why-head" data-reveal>
+              <div>
+                <p className="eyebrow">
+                  <span className="brand-lines"></span>WHY CHOOSE US
+                </p>
+                <h2 id="ab-why-title">
+                  Simpler Sourcing. <br />
+                  <em>Dependable Supply.</em>
+                </h2>
+              </div>
+            </div>
+
+            <ul className="ab-why-list" data-reveal>
+              {WHY_CHOOSE.map(({ image, alt, title, copy }, i) => (
+                <li key={title} style={{ "--i": i } as CSSProperties}>
+                  <Image src={image} alt={alt} fill sizes="(min-width: 992px) 25vw, (min-width: 768px) 50vw, 100vw" />
+                  <div className="ab-why-body">
+                    <span className="ab-why-num" aria-hidden="true">
+                      {pad(i + 1)}
+                    </span>
+                    <h3>{title}</h3>
+                    <p>{copy}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* MANUFACTURING FACILITIES */}
+          <section
+            className="ab-facility"
+            id="manufacturing"
+            aria-roledescription="carousel"
+            aria-label="Manufacturing facilities"
+            onMouseEnter={() => setSliderPaused(true)}
+            onMouseLeave={() => setSliderPaused(false)}
+            onFocus={() => setSliderPaused(true)}
+            onBlur={() => setSliderPaused(false)}
+          >
+            {FACILITY_SLIDES.map((item, i) => (
+              <div
+                key={item.image}
+                className={`ab-facility-slide ${slide === i ? "is-active" : ""}`}
+                aria-hidden={slide !== i}
+              >
+                <Image src={item.image} alt={item.alt} fill sizes="100vw" />
+              </div>
+            ))}
+
+            <div className="ab-facility-copy">
+              <p className="eyebrow">
+                <span className="brand-lines"></span>INSIDE PRODUCTION
+              </p>
+              <p className="ab-facility-text" key={slide} aria-live={sliderPaused ? "polite" : "off"}>
+                {FACILITY_SLIDES[slide].text}
+              </p>
+             
+            </div>
+
+            <div className="ab-facility-controls">
+              <button type="button" aria-label="Previous slide" onClick={() => goToSlide(slide - 1)}>
+                <ArrowLeft size={20} strokeWidth={1.6} aria-hidden="true" />
+              </button>
+              <div className="ab-facility-dots">
+                {FACILITY_SLIDES.map((item, i) => (
+                  <button
+                    key={item.image}
+                    type="button"
+                    className={slide === i ? "is-active" : ""}
+                    aria-label={`Go to slide ${i + 1}`}
+                    aria-current={slide === i}
+                    onClick={() => goToSlide(i)}
+                  >
+                    <i key={slide === i ? `run-${slide}` : "idle"} className={sliderPaused ? "is-paused" : ""} />
+                  </button>
+                ))}
+              </div>
+              <button type="button" aria-label="Next slide" onClick={() => goToSlide(slide + 1)}>
+                <ArrowRight size={20} strokeWidth={1.6} aria-hidden="true" />
+              </button>
+              <p className="ab-facility-count" aria-hidden="true">
+                <strong>{pad(slide + 1)}</strong>
+                <small> / {pad(FACILITY_SLIDES.length)}</small>
+              </p>
+            </div>
+          </section>
+
+   
+
+          {/* SUSTAINABILITY */}
+          <section className="ab-sustain" id="sustainability" aria-labelledby="ab-sustain-title">
+            <div className="ab-sustain-visual" data-reveal>
+              <div className="ab-sustain-arch">
+                <Image
+                  src="/assets/about/sustainability.webp"
+                  alt="Aerial view of a forest with a river shaped like a recycling symbol"
+                  width={850}
+                  height={650}
+                  sizes="(min-width: 992px) 50vw, 92vw"
+                />
+              </div>
+              <svg className="ab-sustain-badge" viewBox="0 0 120 120" aria-hidden="true">
+                <defs>
+                  <path id="ab-badge-circle" d="M60 60 m-46 0 a46 46 0 1 1 92 0 a46 46 0 1 1 -92 0" />
+                </defs>
+                <text>
+                  <textPath href="#ab-badge-circle">RESPONSIBLE PACKAGING • RESPONSIBLE PACKAGING •</textPath>
+                </text>
+              </svg>
+            </div>
+
+            <div className="ab-sustain-copy" data-reveal>
+              <p className="eyebrow">
+                <span className="brand-lines"></span>SUSTAINABILITY
+              </p>
+              <h2 id="ab-sustain-title">
+                Better Materials. <br />
+                <em>For a More Sustainable Tomorrow.</em>
+              </h2>
+              <p>
+                Explore packaging options made with renewable and plant-based materials, alongside
+                recyclable and compostable formats for applicable products. From paper and bagasse to
+                aluminum, Arvis helps businesses consider more responsible material choices while meeting
+                their packaging requirements.
+              </p>
+
+              <ul className="ab-sustain-points">
+                {SUSTAIN_POINTS.map(({ icon: Icon, title }) => (
+                  <li key={title}>
+                    <i>
+                      <Icon size={22} strokeWidth={1.6} aria-hidden="true" />
+                    </i>
+                    {title}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+           <section className="cta" id="contact">
+             <div className="cta-inner">
+               <p className="eyebrow">
+                 <span className="brand-lines"></span> START A CONVERSATION <span className="brand-lines"></span>
+               </p>
+               <h2>
+                 Have a Packaging Requirement?
+                 <br />
+                 <em>Let’s Make It Happen.</em>
+               </h2>
+               <button className="button inverse" type="button" onClick={openQuote}>
+                 Send your requirement <MoveRight size={18} strokeWidth={2} aria-hidden="true" />
+               </button>
+             </div>
+           </section>
+        </main>
+      )}
+    </SiteShell>
+  );
+}

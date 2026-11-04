@@ -1,0 +1,400 @@
+/* =========================================================
+   CONTACT PAGE — mobile-first
+   ========================================================= */
+
+/* ---------- form + details ---------- */
+.ct-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+    padding: 50px 20px 70px
+}
+
+/* heading runs across both columns so it stays on one line */
+.ct-main-head {
+    grid-column: 1 / -1
+}
+
+.ct-main-head h2 {
+    margin-bottom: 10px
+}
+
+.ct-lead {
+    margin: 0 0 30px
+}
+
+.ct-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px 20px
+}
+
+.ct-field {
+    display: grid;
+    gap: 8px;
+    min-width: 0
+}
+
+.ct-field > label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy)
+}
+
+/* only the required-field star is red */
+.ct-field > label > span[aria-hidden],
+.ct-consent label > span > span[aria-hidden] {
+    color: #b4532d
+}
+
+.ct-form input:not([type="checkbox"]),
+.ct-form select,
+.ct-form textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 14px 16px;
+    border: 1px solid rgba(7, 61, 105, .2);
+    border-radius: 12px;
+    background: #fff;
+    font: inherit;
+    font-size: 16px;
+    color: var(--ink);
+    transition: border-color .25s ease, box-shadow .25s ease
+}
+
+.ct-form textarea {
+    resize: vertical;
+    min-height: 140px
+}
+
+/* thin navy chevron in place of the browser's default arrow */
+.ct-form select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 38px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23073d69' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    cursor: pointer
+}
+
+.ct-form input:focus,
+.ct-form select:focus,
+.ct-form textarea:focus {
+    outline: none;
+    border-color: var(--navy);
+    box-shadow: 0 0 0 4px rgba(7, 61, 105, .12)
+}
+
+.ct-form [aria-invalid="true"] {
+    border-color: #b4532d;
+    box-shadow: 0 0 0 4px rgba(180, 83, 45, .1)
+}
+
+.ct-phone {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 8px
+}
+
+.ct-error {
+    font-size: 14px;
+    color: #b4532d
+}
+
+.ct-consent label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #3d4b56;
+    cursor: pointer
+}
+
+.ct-consent input {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    accent-color: var(--navy)
+}
+
+.ct-submit .button {
+    cursor: pointer;
+    border: 0
+}
+
+.ct-success {
+    display: grid;
+    justify-items: start;
+    gap: 12px;
+    padding: 30px;
+    border: 1px solid rgba(63, 143, 128, .3);
+    border-radius: 20px;
+    background: #eef7f4;
+    color: var(--navy)
+}
+
+.ct-success svg {
+    color: #3f8f80
+}
+
+.ct-success h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--navy)
+}
+
+.ct-success p {
+    margin: 0
+}
+
+.ct-success .button {
+    border: 0;
+    border-bottom: 1px solid var(--ink);
+    background: none;
+    cursor: pointer
+}
+
+/* navy details panel */
+.ct-info {
+    display: grid;
+    gap: 26px;
+    align-content: start;
+    padding: 34px 26px;
+    border-radius: 24px 60px 24px 24px;
+    background:
+        radial-gradient(circle at 90% 8%, rgba(200, 168, 116, .25), transparent 45%),
+        var(--navy);
+    color: #fff
+}
+
+.ct-info-block {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 16px
+}
+
+.ct-info-block + .ct-info-block {
+    padding-top: 26px;
+    border-top: 1px solid rgba(255, 255, 255, .14)
+}
+
+.ct-info-icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(200, 168, 116, .55);
+    color: var(--kraft)
+}
+
+.ct-info h3 {
+    margin: 4px 0 10px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #fff
+}
+
+.ct-info address {
+    display: grid;
+    margin: 0;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #c4d3de
+}
+
+.ct-address-link {
+    display: block;
+    color: inherit;
+    text-decoration: none
+}
+
+.ct-address-link address {
+    transition: color .3s ease
+}
+
+.ct-address-link:hover address,
+.ct-address-link:focus-visible address {
+    color: var(--kraft);
+    text-decoration: underline;
+    text-underline-offset: 4px
+}
+
+.ct-info a {
+    color: #fff;
+    overflow-wrap: anywhere;
+    transition: color .3s ease
+}
+
+.ct-info a:hover,
+.ct-info a:focus-visible {
+    color: var(--kraft)
+}
+
+.ct-warehouses {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.ct-warehouses li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 10px
+}
+
+.ct-warehouses strong {
+    font-weight: 600;
+    color: #fff
+}
+
+.ct-warehouses span {
+    color: #c4d3de
+}
+
+.ct-phone-link {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 17px
+}
+
+.ct-phone-link small {
+    display: inline-block;
+    min-width: 46px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--kraft)
+}
+
+/* ---------- map ---------- */
+.ct-map {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    background: var(--off)
+}
+
+.ct-map iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    transition: filter .6s ease
+}
+
+/* floating card over the map */
+.ct-map-card {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 24px 50px -24px rgba(7, 61, 105, .5)
+}
+
+.ct-map-card .ct-info-icon {
+    color: var(--navy);
+    border-color: rgba(7, 61, 105, .2)
+}
+
+.ct-map-card div {
+    display: grid;
+    flex: 1 1 140px
+}
+
+.ct-map-card strong {
+    font-family: var(--font-manrope), sans-serif;
+    font-size: 17px;
+    color: var(--navy)
+}
+
+.ct-map-card span:not(.ct-info-icon) {
+    font-size: 15px;
+    color: #52616c
+}
+
+/* ---------- tablet + ---------- */
+@media (min-width: 768px) {
+    .ct-main {
+        padding: 70px 8vw 90px
+    }
+
+    .ct-form {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+
+    .ct-field-wide {
+        grid-column: 1 / -1
+    }
+
+    .ct-map {
+        height: 480px
+    }
+
+    .ct-map-card {
+        left: 4vw;
+        right: auto;
+        bottom: 40px;
+        max-width: 460px
+    }
+}
+
+/* ---------- desktop ---------- */
+@media (min-width: 992px) {
+    .ct-main {
+        grid-template-columns: minmax(0, 1fr) minmax(0, .85fr);
+        gap: 46px 5vw;
+        align-items: start;
+        padding: 110px 8vw 120px
+    }
+
+    /* form fills the height of the details panel; the message box takes up the slack */
+    .ct-form-card {
+        align-self: stretch
+    }
+
+    .ct-form {
+        height: 100%;
+        grid-template-rows: auto auto auto 1fr auto auto
+    }
+
+    .ct-field-message {
+        grid-template-rows: auto 1fr auto
+    }
+
+    .ct-field-message textarea {
+        height: 100%
+    }
+
+    .ct-info {
+        position: sticky;
+        top: 110px;
+        padding: 40px 34px;
+        border-radius: 40px 90px 40px 40px
+    }
+
+    .ct-map {
+        height: 520px
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ct-map iframe {
+        transition: none
+    }
+}

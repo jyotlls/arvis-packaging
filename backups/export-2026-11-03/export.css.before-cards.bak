@@ -1,0 +1,601 @@
+/* =========================================================
+   EXPORT PAGE — mobile-first
+   ========================================================= */
+
+/* sections fade up as they enter the viewport */
+.ex [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .9s ease, transform .9s cubic-bezier(.2, .8, .2, 1)
+}
+
+.ex [data-reveal].is-in {
+    opacity: 1;
+    transform: none
+}
+
+/* ---------- 1. LOGISTICS & WAREHOUSING ---------- */
+.ex-logistics {
+    padding: 70px 20px
+}
+
+.ex-logistics-top {
+    display: grid;
+    gap: 44px
+}
+
+.ex-logistics-head h2 {
+    margin: 0
+}
+
+.ex .ex-logistics-lead {
+    max-width: 800px;
+    margin: 20px 0 0
+}
+
+.ex .ex-logistics-head h2 + .ex-logistics-lead {
+    margin-top: 24px
+}
+
+/* main photo with a smaller print laid over its corner */
+.ex-logistics-visual {
+    position: relative;
+    padding-bottom: 34px
+}
+
+.ex-logistics-photo {
+    position: relative;
+    height: 300px;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 24px 60px 24px 24px
+}
+
+.ex-logistics-photo img {
+    object-fit: cover;
+    transition: transform 1.4s cubic-bezier(.2, .8, .2, 1)
+}
+
+.ex-logistics-photo:hover img {
+    transform: scale(1.05)
+}
+
+.ex-logistics-inset {
+    position: absolute;
+    left: 14px;
+    bottom: 0;
+    width: 40%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 5px solid #fff;
+    border-radius: 18px;
+    box-shadow: 0 24px 44px -20px rgba(7, 61, 105, .55)
+}
+
+.ex-logistics-inset img {
+    object-fit: cover
+}
+
+/* floating badge on the photo */
+.ex-photo-badge {
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px 10px 12px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, .45)
+}
+
+.ex-photo-badge svg {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    padding: 9px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #fff
+}
+
+.ex-photo-badge span {
+    display: grid;
+    font-size: 14px;
+    color: #52616c
+}
+
+.ex-photo-badge strong {
+    font-family: var(--font-manrope), sans-serif;
+    font-size: 17px;
+    color: var(--navy)
+}
+
+/* ---------- LOGISTICS SERVICES ---------- */
+.ex-services {
+    padding: 70px 20px;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at 50% 60%, rgba(200, 168, 116, .12), transparent 60%),
+        var(--off)
+}
+
+.ex-services-head .eyebrow {
+    justify-content: center
+}
+
+.ex-services-head h2 {
+    margin: 0
+}
+
+/* service tiles; navy rises through the tile on hover */
+.ex-services-grid {
+    display: grid;
+    gap: 20px;
+    margin: 40px 0 0;
+    padding: 0;
+    list-style: none
+}
+
+.ex-services-grid li {
+    position: relative;
+    padding: 32px 28px;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 22px;
+    text-align: left;
+    background: #fff;
+    box-shadow: 0 18px 36px -28px rgba(7, 61, 105, .5);
+    transition: transform .45s cubic-bezier(.2, .8, .2, 1), box-shadow .45s ease
+}
+
+.ex-services-grid li::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--navy);
+    transform: scaleY(0);
+    transform-origin: 50% 100%;
+    transition: transform .5s cubic-bezier(.65, 0, .2, 1)
+}
+
+.ex-services-grid li::after {
+    content: "";
+    position: absolute;
+    top: -70px;
+    right: -70px;
+    z-index: -1;
+    width: 190px;
+    height: 190px;
+    border: 1px solid rgba(200, 168, 116, .55);
+    border-radius: 50%;
+    transition: transform .6s cubic-bezier(.2, .8, .2, 1)
+}
+
+.ex-services-grid svg {
+    display: block;
+    margin-left: -4px;
+    color: var(--navy);
+    transition: color .4s ease
+}
+
+/* step number sits inside the corner ring */
+.ex-services-num {
+    position: absolute;
+    top: 22px;
+    right: 28px;
+    font-family: var(--font-manrope), sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .02em;
+    color: #a9834a;
+    transition: color .4s ease
+}
+
+.ex-services-grid li:hover .ex-services-num {
+    color: var(--kraft)
+}
+
+.ex-services-grid h3 {
+    margin: 20px 0 10px;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -.01em;
+    color: var(--navy);
+    transition: color .4s ease
+}
+
+.ex-services-grid p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    transition: color .4s ease
+}
+
+.ex-services-grid li:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 56px rgba(7, 61, 105, .28)
+}
+
+.ex-services-grid li:hover::before {
+    transform: scaleY(1)
+}
+
+.ex-services-grid li:hover::after {
+    transform: scale(1.35)
+}
+
+.ex-services-grid li:hover svg {
+    color: var(--kraft)
+}
+
+.ex-services-grid li:hover h3 {
+    color: #fff
+}
+
+.ex-services-grid li:hover p {
+    color: rgba(255, 255, 255, .84)
+}
+
+/* ---------- GLOBAL PRESENCE MAP ---------- */
+.ex-map {
+    padding: 70px 20px;
+    text-align: center;
+    background: #fff
+}
+
+.ex-map-head .eyebrow {
+    justify-content: center
+}
+
+.ex-map-head h2 {
+    margin: 0
+}
+
+/* SVG world map: grey land, navy markets, gold origin */
+.ex-wmap {
+    display: block;
+    width: 100%;
+    height: auto
+}
+
+.ex-wc {
+    stroke: #fff;
+    stroke-width: .5;
+    vector-effect: non-scaling-stroke;
+    transition: fill .3s ease
+}
+
+.ex-wc--land {
+    fill: #cdd3d9
+}
+
+.ex-wc--land:hover {
+    fill: #b8c0c7
+}
+
+/* a thick outline in the same navy so small markets (the UAE) still read at map scale */
+.ex-wc--market {
+    fill: var(--navy);
+    stroke: var(--navy);
+    stroke-width: 2.5
+}
+
+.ex-wc--market:hover {
+    fill: #0b5a96
+}
+
+.ex-wc--origin {
+    fill: var(--kraft)
+}
+
+.ex-wc--origin:hover {
+    fill: #b8925a
+}
+
+.ex-map-stage {
+    position: relative;
+    max-width: 1100px;
+    margin: 30px auto 0
+}
+
+/* hovering or tapping a market card lights that country; the other markets step back */
+.ex-wmap.has-active .ex-wc--market {
+    fill: #a9bccd;
+    stroke: #a9bccd
+}
+
+.ex-wmap .ex-wc--market.is-active {
+    fill: var(--navy);
+    stroke: var(--kraft);
+    stroke-width: 1.5
+}
+
+/* markets row under the map: one card per country, navy when active */
+.ex-markets {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    max-width: 980px;
+    margin: 30px auto 0;
+    padding: 0;
+    list-style: none
+}
+
+.ex-markets li {
+    display: flex
+}
+
+.ex-markets.is-in li {
+    animation: exRise .7s cubic-bezier(.2, .8, .2, 1) var(--d, 0s) both
+}
+
+.ex-market {
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    gap: 12px;
+    width: 100%;
+    padding: 20px 8px 16px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: #fff;
+    font: inherit;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 18px 34px -26px rgba(7, 61, 105, .55);
+    transition: transform .5s cubic-bezier(.2, .8, .2, 1), box-shadow .5s ease, background-color .35s ease, border-color .35s ease
+}
+
+.ex-market:focus-visible {
+    outline: 2px solid var(--kraft);
+    outline-offset: 4px
+}
+
+/* round flag with a white rim; a gold ring draws in when active */
+.ex-flag-disc {
+    position: relative;
+    display: block;
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px #fff, 0 12px 22px -12px rgba(7, 61, 105, .5)
+}
+
+.ex-flag-disc img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover
+}
+
+.ex-flag-disc::after {
+    content: "";
+    position: absolute;
+    inset: -9px;
+    border-radius: 50%;
+    border: 2px solid var(--kraft);
+    opacity: 0;
+    transform: scale(.85);
+    transition: opacity .4s ease, transform .5s cubic-bezier(.2, .8, .2, 1)
+}
+
+.ex-market-text {
+    display: grid;
+    gap: 2px;
+    line-height: 1.25
+}
+
+.ex-market-text strong {
+    font-family: var(--font-manrope), sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    transition: color .3s ease
+}
+
+.ex-market-text small {
+    font-size: 12px;
+    color: #52616c;
+    transition: color .3s ease
+}
+
+.ex-market:hover,
+.ex-market.is-active {
+    transform: translateY(-6px);
+    border-color: var(--navy);
+    background: var(--navy);
+    box-shadow: 0 26px 40px -22px rgba(7, 61, 105, .7)
+}
+
+.ex-market:hover .ex-flag-disc::after,
+.ex-market.is-active .ex-flag-disc::after {
+    opacity: 1;
+    transform: none
+}
+
+.ex-market:hover .ex-market-text strong,
+.ex-market.is-active .ex-market-text strong {
+    color: #fff
+}
+
+.ex-market:hover .ex-market-text small,
+.ex-market.is-active .ex-market-text small {
+    color: var(--kraft)
+}
+
+@keyframes exSpin {
+    to { transform: rotate(360deg) }
+}
+
+@keyframes exRise {
+    from { opacity: 0; transform: translateY(26px) }
+    to { opacity: 1; transform: none }
+}
+
+/* ---------- tablet + ---------- */
+@media (min-width: 768px) {
+    .ex-map {
+        padding-left: 4vw;
+        padding-right: 4vw
+    }
+
+    .ex-market {
+        grid-auto-flow: column;
+        justify-content: center;
+        align-items: center;
+        gap: 22px;
+        padding: 26px 22px;
+        text-align: left
+    }
+
+    .ex-logistics,
+    .ex-services {
+        padding-left: 4vw;
+        padding-right: 4vw
+    }
+
+    .ex-logistics-photo {
+        height: 420px
+    }
+
+    .ex-logistics-inset {
+        left: 28px;
+        width: 30%
+    }
+
+    .ex-photo-badge {
+        left: 24px;
+        top: 24px
+    }
+
+    .ex-services-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+}
+
+/* ---------- desktop ---------- */
+@media (min-width: 992px) {
+    .ex-map {
+        padding-top: 100px;
+        padding-bottom: 100px
+    }
+
+    .ex-map-stage {
+        margin-top: 40px
+    }
+
+    .ex-markets {
+        gap: 20px;
+        margin-top: 44px
+    }
+
+    .ex-flag-disc {
+        width: 96px;
+        height: 96px
+    }
+
+    .ex-market-text strong {
+        font-size: 22px
+    }
+
+    .ex-market-text small {
+        font-size: 14px
+    }
+
+    .ex-logistics,
+    .ex-services {
+        padding-top: 100px;
+        padding-bottom: 100px
+    }
+
+    /* copy left, overlapping photos right */
+    .ex-logistics-top {
+        grid-template-columns: minmax(0, 54fr) minmax(0, 46fr);
+        align-items: center;
+        gap: clamp(32px, 4vw, 64px)
+    }
+
+    .ex-logistics-visual {
+        padding: 0 0 44px 5%
+    }
+
+    .ex-logistics-photo {
+        height: clamp(420px, 36vw, 560px);
+        border-radius: 40px 110px 40px 40px
+    }
+
+    .ex-logistics-inset {
+        left: 0;
+        width: 36%;
+        border-width: 8px;
+        border-radius: 24px
+    }
+
+    .ex-photo-badge {
+        left: auto;
+        right: 28px;
+        top: auto;
+        bottom: 28px
+    }
+
+    .ex-services-grid {
+        max-width: 1320px;
+        margin: 56px auto 0
+    }
+
+    .ex-services-grid li {
+        padding: 36px 32px
+    }
+
+    .ex-services-grid h3 {
+        font-size: 24px
+    }
+
+    .ex-services-grid p {
+        font-size: 16px
+    }
+}
+
+/* narrow desktop: badge would touch the inset photo, so it moves to the top corner */
+@media (min-width: 992px) and (max-width: 1299px) {
+    .ex-photo-badge {
+        top: 28px;
+        bottom: auto
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .ex-markets.is-in li {
+        animation: none
+    }
+
+    .ex-services-grid li,
+    .ex-services-grid li::before,
+    .ex-services-grid li::after,
+    .ex-market {
+        transition: none
+    }
+
+    .ex-services-grid li:hover,
+    .ex-market:hover,
+    .ex-market.is-active {
+        transform: none
+    }
+
+    .ex [data-reveal] {
+        opacity: 1;
+        transform: none;
+        animation: none;
+        transition: none
+    }
+}

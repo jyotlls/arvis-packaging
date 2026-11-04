@@ -1,0 +1,58 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import ProductDetailPage from "../../../../components/products/ProductDetailPage";
+import { ALUMINUM_PRODUCTS } from "../../../../data/materialProducts";
+import { getRelatedProducts } from "../../../../data/relatedProducts";
+import { SITE_NAME } from "../../../../lib/site";
+import "../../products.css";
+
+const BANNER = "/assets/banner/aluminum-banner.webp";
+
+// One static page per product.
+export function generateStaticParams() {
+  return ALUMINUM_PRODUCTS.map(({ slug }) => ({ slug }));
+}
+
+export async function generateMetadata(props: PageProps<"/products/aluminum/[slug]">): Promise<Metadata> {
+  const { slug } = await props.params;
+  const product = ALUMINUM_PRODUCTS.find((item) => item.slug === slug);
+  if (!product) return {};
+
+  const image = { url: product.image, width: 640, height: 480, alt: product.alt };
+  return {
+    title: product.title,
+    description: product.description,
+    alternates: { canonical: `/products/aluminum/${product.slug}` },
+    // openGraph is replaced (not merged) per page, so repeat the shared fields
+    openGraph: {
+      type: "website",
+      siteName: SITE_NAME,
+      locale: "en_US",
+      url: `/products/aluminum/${product.slug}`,
+      title: product.title,
+      description: product.description,
+      images: [image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: product.title,
+      description: product.description,
+      images: [product.image],
+    },
+  };
+}
+
+export default async function AluminumProduct(props: PageProps<"/products/aluminum/[slug]">) {
+  const { slug } = await props.params;
+  const product = ALUMINUM_PRODUCTS.find((item) => item.slug === slug);
+  if (!product) notFound();
+
+  return (
+    <ProductDetailPage
+      product={product}
+      banner={BANNER}
+      range={{ label: "Aluminum Products", href: "/products/aluminum" }}
+      related={getRelatedProducts("/products/aluminum", slug)}
+    />
+  );
+}

@@ -1,0 +1,206 @@
+"use client";
+
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import Image from "next/image";
+import { Boxes, MoveRight, Ship, Warehouse } from "lucide-react";
+import PageBanner from "../PageBanner";
+import SiteShell from "../SiteShell";
+import { MARKETS } from "../../data/markets";
+import WorldMap from "./WorldMap";
+
+// Logistics capabilities
+const LOGISTICS = [
+  {
+    icon: Ship,
+    title: "International Freight Management",
+    text: "We coordinate ocean freight, container loading, and shipping arrangements to support packaging exports from India to international markets.",
+  },
+  {
+    icon: Boxes,
+    title: "Multi-Manufacturer Order Consolidation",
+    text: "Packaging products from multiple manufacturers are combined into coordinated shipments, helping buyers manage mixed product orders and optimize container space.",
+  },
+  {
+    icon: Warehouse,
+    title: "Customs & Warehousing Support",
+    text: "We assist with export documentation and customs coordination, supported by warehousing facilities in India and the USA for organized storage and distribution.",
+  },
+];
+
+export default function ExportPage() {
+  const rootRef = useRef<HTMLElement>(null);
+  // market card being hovered or tapped; lights that country on the map
+  const [activeMarket, setActiveMarket] = useState<string | null>(null);
+
+  // fade sections in as they reach the viewport
+  useEffect(() => {
+    const items = rootRef.current?.querySelectorAll<HTMLElement>("[data-reveal]");
+    if (!items) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { rootMargin: "0px 0px -10% 0px" },
+    );
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <SiteShell activePage="export">
+      {({ openQuote }) => (
+        <main className="ex" ref={rootRef}>
+          <PageBanner title="Export" image="/assets/export/export-hero-port.webp" focus="100% 58%" />
+
+          {/* GLOBAL LOGISTICS & WAREHOUSING */}
+          <section className="ex-logistics" aria-labelledby="ex-logistics-title">
+            <div className="ex-logistics-top">
+              <div className="ex-logistics-head" data-reveal>
+                <p className="eyebrow">
+                  <span className="brand-lines"></span>GLOBAL REACH
+                </p>
+                <h2 id="ex-logistics-title">
+                  Packaging Exports <br />
+                  <em>Across International Markets</em>
+                </h2>
+                <p className="ex-logistics-lead">
+                  Arvis Packaging brings together a network of Indian packaging manufacturers, serving businesses
+                  in the USA, UK, and UAE with a diverse range of paper, plastic, bagasse, and aluminum packaging
+                  solutions. We work with importers, distributors, and wholesalers across various industries to
+                  meet their packaging requirements.
+                </p>
+                <p className="ex-logistics-lead">
+                  Our export services include product specification management, customization, order
+                  consolidation, and export shipment coordination. By combining the capabilities of multiple
+                  manufacturers, we help buyers manage diverse packaging orders through an integrated and organized
+                  supply network.
+                </p>
+              </div>
+
+              <div className="ex-logistics-visual" data-reveal>
+                <figure className="ex-logistics-photo">
+                  <Image
+                    src="/assets/export/export-container-yard.webp"
+                    alt="Shipping containers stacked at a port terminal"
+                    fill
+                    sizes="(min-width: 992px) 46vw, 92vw"
+                  />
+                  <figcaption className="ex-photo-badge">
+                    <Ship size={20} strokeWidth={1.7} aria-hidden="true" />
+                    <span>
+                      <strong>India → USA, UK &amp; UAE</strong>
+                      Markets we supply
+                    </span>
+                  </figcaption>
+                </figure>
+                <div className="ex-logistics-inset">
+                  <Image
+                    src="/assets/export/steps/export-packing.webp"
+                    alt="Person preparing a cardboard shipping carton"
+                    fill
+                    sizes="(min-width: 992px) 20vw, 40vw"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* LOGISTICS SERVICES */}
+          <section className="ex-services" aria-labelledby="ex-services-title">
+            <div className="ex-services-head" data-reveal>
+              <p className="eyebrow">
+                <span className="brand-lines"></span>EXPORT LOGISTICS
+                <span className="brand-lines"></span>
+              </p>
+              <h2 id="ex-services-title">
+                Streamlined Operations, <br />
+                <em>Reliable Results</em>
+              </h2>
+            </div>
+
+            <ul className="ex-services-grid" data-reveal>
+              {LOGISTICS.map(({ icon: Icon, title, text }, i) => (
+                <li key={title}>
+                  <span className="ex-services-num" aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="ex-services-icon">
+                    <Icon size={30} strokeWidth={1.4} aria-hidden="true" />
+                  </span>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* OUR PRESENCE: MAP + MARKETS WE SUPPLY */}
+          <section className="ex-map" aria-labelledby="ex-map-title">
+            <div className="ex-map-head" data-reveal>
+              <p className="eyebrow">
+                <span className="brand-lines"></span>OUR PRESENCE
+                <span className="brand-lines"></span>
+              </p>
+              <h2 id="ex-map-title">
+                Connecting Businesses <br />
+                <em>Beyond Borders</em>
+              </h2>
+            </div>
+
+            <div className="ex-map-stage" data-reveal>
+              <WorldMap active={activeMarket} />
+            </div>
+
+            <ul className="ex-markets" data-reveal>
+              {MARKETS.map((m, i) => (
+                <li key={m.code} style={{ "--d": `${i * 70}ms` } as CSSProperties}>
+                  <button
+                    type="button"
+                    className={`ex-market${activeMarket === m.iso ? " is-active" : ""}`}
+                    aria-pressed={activeMarket === m.iso}
+                    onMouseEnter={() => setActiveMarket(m.iso)}
+                    onMouseLeave={() => setActiveMarket(null)}
+                    onFocus={() => setActiveMarket(m.iso)}
+                    onBlur={() => setActiveMarket(null)}
+                    onClick={() => setActiveMarket((current) => (current === m.iso ? null : m.iso))}
+                  >
+                    <span className="ex-flag-disc">
+                      {/* eslint-disable-next-line @next/next/no-img-element -- small static SVG flag */}
+                      <img src={`/assets/flags/${m.code}.svg`} alt="" width={80} height={80} loading="lazy" />
+                    </span>
+                    <span className="ex-market-text">
+                      <strong>{m.name}</strong>
+                      <small>{m.fullName}</small>
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* CTA */}
+          <section className="cta" id="contact">
+            <div className="cta-inner">
+              <p className="eyebrow">
+                <span className="brand-lines"></span> START A CONVERSATION <span className="brand-lines"></span>
+              </p>
+              <h2>
+                Planning an Export Order?
+                <br />
+                <em>Let’s Make It Happen.</em>
+              </h2>
+              <button className="button inverse" type="button" onClick={openQuote}>
+                Send your requirement <MoveRight size={18} strokeWidth={2} aria-hidden="true" />
+              </button>
+            </div>
+          </section>
+        </main>
+      )}
+    </SiteShell>
+  );
+}
