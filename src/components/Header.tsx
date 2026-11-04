@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Languages, Menu, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
+import LanguageSwitcher from "./LanguageSwitcher";
 import MegaMenu from "./MegaMenu";
 
 type HeaderProps = {
@@ -8,10 +9,8 @@ type HeaderProps = {
   isSticky: boolean;
   menuOpen: boolean;
   megaOpen: boolean;
-  translateOpen: boolean;
   onToggleMenu: () => void;
   onCloseMenu: () => void;
-  onToggleTranslate: () => void;
   onOpenQuote: () => void;
   onMegaOpen: () => void;
   onMegaClose: () => void;
@@ -22,10 +21,8 @@ export default function Header({
   isSticky,
   menuOpen,
   megaOpen,
-  translateOpen,
   onToggleMenu,
   onCloseMenu,
-  onToggleTranslate,
   onOpenQuote,
   onMegaOpen,
   onMegaClose,
@@ -88,19 +85,7 @@ export default function Header({
       </nav>
 
       <div className="header-tools">
-        <div className="">
-          <button
-            type="button"
-            className="language-trigger google_box"
-            aria-label="Select language"
-            aria-expanded={translateOpen}
-            aria-controls="google_translate_element"
-            onClick={onToggleTranslate}
-          >
-            <Languages size={18} strokeWidth={1.8} aria-hidden="true" />
-          </button>
-          <div id="google_translate_element" className={`google-translate ${translateOpen ? "open" : ""}`} />
-        </div>
+        <LanguageSwitcher />
       </div>
 
       <button

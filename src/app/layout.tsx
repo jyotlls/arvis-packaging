@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Instrument_Serif, Manrope } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
+import GoogleTranslate from "../components/GoogleTranslate";
 import { CONTACT, DEFAULT_OG_IMAGE, SITE_INDEXABLE, SITE_NAME, SITE_URL } from "../lib/site";
 
 // Self-hosted by Next.js (no render-blocking request to Google Fonts).
@@ -91,6 +92,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         {children}
+        <GoogleTranslate />
       </body>
     </html>
   );
