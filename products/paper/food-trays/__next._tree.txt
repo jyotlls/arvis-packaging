@@ -1,0 +1,12 @@
+:HL["/_next/static/chunks/0xwd91xh5j6wq.css","style"]
+:HL["/_next/static/chunks/0fxi_h-xzasxo.css","style"]
+:HL["/_next/static/chunks/3lxnc9k6jnrqt.css","style"]
+:HL["/_next/static/media/07c7676b89ed2778-s.p.2bn3s6zvc0dyp.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/82450a180bcad83c-s.p.0p-wng2nn8o-p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/e63b65bb308a9351-s.p.3j3877k49yy0l.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/0n7cbm6b7lf_e.css","style"]
+4:[["children",{"s":"__PAGE__","h":160}]]
+3:[["children",{"s":{"n":"slug","t":"d","k":"food-trays","s":[]},"h":96,"c":"$Q4"}]]
+2:[["children",{"s":"paper","h":96,"c":"$Q3"}]]
+1:[["children",{"s":"products","h":96,"c":"$Q2"}]]
+0:{"b":"2s06WVimZZbOdIiQ1VT7b","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

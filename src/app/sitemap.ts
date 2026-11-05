@@ -4,6 +4,9 @@ import { ALUMINUM_PRODUCTS, BAGASSE_PRODUCTS, PLASTIC_PRODUCTS } from "../data/m
 import { PAPER_PRODUCTS } from "../data/paperProducts";
 import { SITE_URL } from "../lib/site";
 
+export const dynamic = "force-static";
+
+// Add each new page here as it is built.
 // Add each new page here as it is built.
 const ROUTES: { path: string; priority: number; changeFrequency: "weekly" | "monthly" }[] = [
   { path: "/", priority: 1, changeFrequency: "weekly" },

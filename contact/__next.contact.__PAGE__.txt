@@ -1,0 +1,39 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/0umf92h1sb77c.js"
+3:I[39756,["$2"],"default"]
+4:I[37457,["$2"],"default"]
+b:"/_next/static/chunks/1dfxzg362hy4n.js"
+c:"/_next/static/chunks/0m_1etq6er13u.js"
+d:I[8105,["$2","$b","$c"],"default"]
+e:I[97367,["$2"],"OutletBoundary"]
+f:"$Sreact.suspense"
+12:"ViewportBoundary"
+13:I[97367,["$2"],"$12"]
+14:"MetadataBoundary"
+15:I[97367,["$2"],"$14"]
+:HL["/_next/static/chunks/0xwd91xh5j6wq.css","style"]
+:HL["/_next/static/chunks/0fxi_h-xzasxo.css","style"]
+:HL["/_next/static/chunks/3lxnc9k6jnrqt.css","style"]
+:HL["/_next/static/chunks/0qvnddl51govv.css","style"]
+6:X
+9:X
+9:C
+a:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"ContactPage\",\"url\":\"https://www.arvispackaging.com/contact\",\"mainEntity\":{\"@type\":\"Organization\",\"name\":\"Arvis Packaging\",\"url\":\"https://www.arvispackaging.com\",\"email\":\"sales@arvispackaging.com\",\"telephone\":[\"+918169604127\",\"+12035270992\"],\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"1,B, Kishan Corporation, 26-30, National Highway, opp. Kuber Cinema, Morbi - 2\",\"addressLocality\":\"Morbi\",\"addressRegion\":\"Gujarat\",\"postalCode\":\"363642\",\"addressCountry\":\"IN\"}}}"}}],["$","$Ld",null,{}]],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0qvnddl51govv.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1dfxzg362hy4n.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0m_1etq6er13u.js","async":true}]],["$","$Le",null,{"children":["$","$f",null,{"name":"Next.MetadataOutlet","children":"$@10"}]}]]}],"p":"$@11","v":null,"s":"$6"}}]]
+7:[["children",{"s":"contact","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}]}]]}],"p":"$@8","v":"$9","s":"$6"},"c":"$Qa"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0xwd91xh5j6wq.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/0fxi_h-xzasxo.css","precedence":"next"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/3lxnc9k6jnrqt.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/0umf92h1sb77c.js","async":true}]],["$","html",null,{"lang":"en","className":"j1eaMG_variable C0fBEq_variable G6kXWG_variable","children":["$","body",null,{"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"name\":\"Arvis Packaging\",\"url\":\"https://www.arvispackaging.com\",\"logo\":\"https://www.arvispackaging.com/assets/arvis-logo.png\",\"email\":\"sales@arvispackaging.com\",\"contactPoint\":[{\"@type\":\"ContactPoint\",\"telephone\":\"+91-81696-04127\",\"contactType\":\"sales\",\"email\":\"sales@arvispackaging.com\"},{\"@type\":\"ContactPoint\",\"telephone\":\"+1-203-527-0992\",\"contactType\":\"sales\",\"email\":\"sales@arvispackaging.com\"}]}"}}],["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]]}]}]]}],"p":"$@5","v":null,"s":"$6"},"c":"$Q7"},"h":{"r":["$","$1","h",{"children":[null,["$","$L13",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L15",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$f",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Contact Us | Arvis Packaging"}],["$","meta","1",{"name":"description","content":"Contact Arvis Packaging for paper, plastic, molded fiber and aluminum packaging. Email, call or send your requirement to our team in Morbi, Gujarat."}],["$","meta","2",{"name":"application-name","content":"Arvis Packaging"}],["$","meta","3",{"name":"robots","content":"noindex, nofollow"}],["$","meta","4",{"name":"googlebot","content":"noindex, nofollow"}],["$","link","5",{"rel":"canonical","href":"https://www.arvispackaging.com/contact/"}],["$","meta","6",{"property":"og:title","content":"Contact Us | Arvis Packaging"}],["$","meta","7",{"property":"og:description","content":"Contact Arvis Packaging for paper, plastic, molded fiber and aluminum packaging. Email, call or send your requirement to our team in Morbi, Gujarat."}],["$","meta","8",{"property":"og:url","content":"https://www.arvispackaging.com/contact/"}],["$","meta","9",{"property":"og:site_name","content":"Arvis Packaging"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:image","content":"https://www.arvispackaging.com/assets/banner/brand-banner-n.webp"}],["$","meta","12",{"property":"og:image:width","content":"1920"}],["$","meta","13",{"property":"og:image:height","content":"880"}],["$","meta","14",{"property":"og:image:alt","content":"Arvis Packaging branded packaging"}],["$","meta","15",{"property":"og:type","content":"website"}],["$","meta","16",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","17",{"name":"twitter:title","content":"Contact Us | Arvis Packaging"}],"$L16","$L17","$L18","$L19","$L1a"]}]}],null]}],"$L1b"]}],"p":"$@1c","v":null,"s":"$6"}},"a":"$@1d","u":"$@1e","b":"2s06WVimZZbOdIiQ1VT7b"}
+1f:I[27201,["$2"],"IconMark"]
+10:null
+16:["$","meta","18",{"name":"twitter:description","content":"Contact Arvis Packaging for paper, plastic, molded fiber and aluminum packaging. Email, call or send your requirement to our team in Morbi, Gujarat."}]
+17:["$","meta","19",{"name":"twitter:image","content":"https://www.arvispackaging.com/assets/banner/brand-banner-n.webp"}]
+18:["$","link","20",{"rel":"icon","href":"/icon.png?icon.33j5mn97kotj9.png","sizes":"512x512","type":"image/png"}]
+19:["$","link","21",{"rel":"apple-touch-icon","href":"/apple-icon.png?apple-icon.0xdn7_bwk6iag.png","sizes":"180x180","type":"image/png"}]
+1a:["$","$L1f","22",{}]
+1b:["$","meta",null,{"name":"next-size-adjust","content":""}]
+6:300
+1e:true
+6:C
+1d:0
+8:"$undefined"
+5:"$undefined"
+1c:"$undefined"
+11:"$undefined"
